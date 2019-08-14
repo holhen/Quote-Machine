@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    
+    <title>Quote Machine</title>
+</head>
+<body>
+    <div id="quote-box">
+        <h1 id="text"></h1>
+        <p id="author"></p>
+        <a id="tweet-quote"><i class="fab fa-twitter-square"></i></a>
+        <button id="new-quote">New quote</button>
+    </div>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src = "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script>
+    const quotesArray = [];
+
+    function getQuote() {
+        const randomIndex = Math.floor(Math.random() * quotesArray.length);
+        const quote = quotesArray[randomIndex].quote;
+        const author = quotesArray[randomIndex].author;
+
+        $("#text").text(quote);
+        $("#author").text(author);
+        $("a").attr("href", `https://twitter.com/intent/tweet?text=${quote}+${author}`)
+    }
+
+    function doTransition() {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+
+        $("body").css("background-color", `rgb(${red}, ${green}, ${blue})`);
+        $("#text").css("color", `rgb(${red}, ${green}, ${blue})`);
+        $("#author").css("color", `rgb(${red}, ${green}, ${blue})`);
+        $("#new-quote").css("background-color", `rgb(${red}, ${green}, ${blue})`);
+        $("i").css("color", `rgb(${red}, ${green}, ${blue})`);
+
+    }
+
+    $("document").ready(() => {
+            $.getJSON("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json", (data) => {
+                $("#text").addClass("fading");
+                setTimeout(() => $("#text").removeClass("fading"),2000);
+                quotesArray.push(...data.quotes);
+                getQuote();
+                doTransition();
+            })
+
+            $("#new-quote").click(() => {
+                $("#text").addClass("fading");
+                setTimeout(() => $("#text").removeClass("fading"),2000);
+                getQuote();
+                doTransition();
+            });
+        })
+    </script>
+</body>
+</html>

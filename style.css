@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #1ab2c3;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    transition: background-color 2s ease;
+}
+#quote-box {
+    position: relative;
+    width: 550px;
+    min-height: 250px;
+    height: auto;
+    padding: 20px 60px 80px 60px;
+    background-color: white;
+}
+
+#text {
+    text-align: center;
+    margin-top: 0;
+    transition: color 2s ease
+}
+
+#author {
+    float: right;
+    transition: color 2s ease
+}
+
+#new-quote {
+    position: absolute;
+    right: 60px;
+    bottom: 40px;
+    margin-bottom: 0;
+    float: right;
+    clear: both;
+    color: white;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: green;
+    transition: background-color 2s ease
+}
+
+i {
+    position: absolute;
+    left: 60px;
+    bottom: 40px;
+    font-size: 40px;
+    color: green;
+    transition: color 2s ease
+}
+
+.fading {
+    animation: fade 2s ease
+}
+
+@keyframes fade {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+
+
