@@ -5,4 +5,4 @@ A random quote appears in a box. A new quote can be fetched by clicking on New Q
 #Built with
  - HTML5
  - CSS3
- - JavaScript
+ - jQuery
